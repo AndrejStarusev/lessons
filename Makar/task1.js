@@ -36,22 +36,27 @@ while(true) {
 
 function createUser () {
     let userName = prompt('Введите ник ')
+    let userSurname = prompt('Введите фамилию ')
+    let userGender = prompt('Ваш гендер ','male','female')
     let userAge = prompt('Введите возраст ')
     user = {
         name: userName,
-        age: userAge,
-        id: base.length
+        surname: userSurname,
+        gender: userGender,
+        age: userAge
     }
-    base.push(user)
+    base.push(`${base.length + 1}` , user)
     console.log(user)
 }
 
 function resetUser () {
-    let key = prompt('Введите айди юзера которого хотите изменить: ')
-    for(key in user) {
-        user.name = prompt('Введите новое имя: ')
-        user.age = prompt('Введите новый возраст: ')
-        break;
+    console.log(base)
+    let key = prompt('Введите номер юзера которого хотите изменить: ')
+    let change = prompt('Что вы хотите изменить?', 'name', 'surname','age','gender')
+    let newValue= prompt()
+    switch(change) {
+        case name:
+        user.name = newValue
     }
     // console.log(base)
 }
