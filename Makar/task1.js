@@ -1,3 +1,4 @@
+const prompt = require('prompt-sync')();
 let base = []
 let user = {}
 let command = 0;
