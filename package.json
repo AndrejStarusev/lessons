@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/AndrejStarusev/lessons#readme",
   "dependencies": {
-    "prompt-async": "^0.9.9"
+    "prompt-sync": "^4.2.0"
   }
 }
