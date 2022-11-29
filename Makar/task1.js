@@ -28,7 +28,7 @@ while(true) {
     }
 
     let value = command
-    if(value > 4) {
+    if(value > 6) {
         console.log('Такой команды не существует')
     }
     if(value == ' ' || value <= 0) break;
@@ -53,11 +53,21 @@ function createUser () {
 function resetUser () {
     console.log(base)
     let key = prompt('Введите номер юзера которого хотите изменить: ')
-    let change = prompt('Что вы хотите изменить?', 'name', 'surname','age','gender')
-    let newValue= prompt()
+    let change = prompt('Что вы хотите изменить?(name/surname/gender/age) ')
+    let newValue= prompt('Введите изминения ')
     switch(change) {
-        case name:
+        case 'name':
         user.name = newValue
+        break;
+        case 'surname':
+        user.surname = newValue
+        break;
+        case 'gender':
+        user.gender = newValue
+        break;
+        case 'age':
+        user.age = newValue
+        break;
     }
     // console.log(base)
 }
