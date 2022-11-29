@@ -38,7 +38,7 @@ while(true) {
 function createUser () {
     let userName = prompt('Введите ник ')
     let userSurname = prompt('Введите фамилию ')
-    let userGender = prompt('Ваш гендер ','male','female')
+    let userGender = prompt('Ваш гендер male/female')
     let userAge = prompt('Введите возраст ')
     user = {
         name: userName,
