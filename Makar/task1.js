@@ -9,6 +9,7 @@ function makeUser(name,surname,age,gender,index) {
         index:index,
     }
 }
+let user = {}
 while(true) {
 
     command = +prompt("1:Создать юзера 2:Обновить юзера 3:Удалить юзера 4:Найти юзера 5:Отсортировать всех юзеров 6:Вывести все данные ")
@@ -34,11 +35,10 @@ while(true) {
         break;        
     }
 
-    let value = command
-    if(value > 6) {
+    if(command > 6) {
         console.log('Такой команды не существует')
     }
-    if(value <= 0) break;
+    if(command <= 0) break;
 }   
 function createUser() {
     let userName = prompt('имя: ')
@@ -46,17 +46,19 @@ function createUser() {
     let userAge = +prompt('возраст: ')
     let userGender = prompt('гендер: ')
     let userIndex = base.length;
-    let user = makeUser(userName,userSurname,userAge,userGender,userIndex)
+    user = makeUser(userName,userSurname,userAge,userGender,userIndex)
     base.push(user)
 }
 function resetUser() {
     console.log(base)
-    let criterion = +prompt()
+    let index = +prompt()
     for(let i = 0;i < base.length;i++) {
-        console.log(i)
-        if(i == criterion) {
-            let value = prompt()
-            base[i] = value 
+        if(i == index) {
+            let number = base.length
+            let newValue = prompt('')
+            base[number] = Object.assign (user,{
+                name: newValue,
+            });
         }
         
     }
