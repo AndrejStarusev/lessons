@@ -2,7 +2,10 @@ const prompt = require('prompt-sync')();
 let command;
 let update;
 let indexUser;
-let breakKey = '0';
+let specificProperty;
+let arrFindUsers;
+const breakKey = '0';
+
 const users = [];
 
 function CreateUser() {
@@ -21,7 +24,7 @@ function updateUsers(index) {
             const user = users[index];
             const value = prompt('введите значение ');
             user[update] = value;
-        }
+}
         
         // switch(update) {
         //     case 'name' : 
@@ -43,6 +46,14 @@ function updateUsers(index) {
 
 }
 
+function searchUsers(value) {
+    const search = prompt(`введите ${value} `);
+    arrFindUsers = users.filter(user => 
+        user[value] === search
+    );
+    return arrFindUsers
+}
+
 
 
 while (command !== false) {
@@ -59,6 +70,11 @@ while (command !== false) {
         case '3' :
             indexUser = prompt('Введите индекс юзера ');
             users.splice(indexUser, 1)
+        break;
+        case '4' :
+            specificProperty = prompt('Введите выбор поиска юзера(name, surname, age, gender) ');
+            searchUsers(specificProperty);
+            console.log(arrFindUsers);
         break;
 
         default : command = false;
