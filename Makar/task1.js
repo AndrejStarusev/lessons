@@ -25,7 +25,7 @@ while(true) {
         break;
         case 3:
 
-            deleteUser()
+            // deleteUser()
         break;
         case 4:
             searchUser()
@@ -51,15 +51,16 @@ function createUser() {
 }
 function resetUser() {
     console.log(base)
-    let index = +prompt()
-    for(let i = 0;i < base.length;i++) {
-        if(i == index) {
-            let number = base.length
-            let newValue = prompt('')
-            base[number] = Object.assign (user,{
-                name: newValue,
-            });
-        }
-        
-    }
+    let index =  +prompt()
+    let changes = prompt()
+    let newValue = prompt()
+    base[index][changes] = newValue
 }
+
+
+function searchUser() {
+    let key = prompt('По каким критериям поиск ')
+    let value = prompt('')
+    const find = base.filter(person => person[key]  == value)
+    console.log(find)
+} 
