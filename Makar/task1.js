@@ -96,5 +96,6 @@ function sortUsers(base1,order){
             }
         }
     }
+    
     return base1;
 }
