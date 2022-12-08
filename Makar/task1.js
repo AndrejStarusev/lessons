@@ -30,8 +30,11 @@ while(true) {
         case 4:
             searchUser()
         break;
+        case 5:
+            console.log(sortUsers(base,'>'))
+        break;
         case 6:
-            console.log(base)
+            base.forEach(person => console.log(person))
         break;        
     }
 
@@ -64,3 +67,19 @@ function searchUser() {
     const find = base.filter(person => person[key]  == value)
     console.log(find)
 } 
+function sortUsers(base1,order){
+    let property = prompt()
+    for(let j = 0;j < base1.length; j++) {
+        for (let i = 0; i < base1.length - 1;i++){
+            if(order == '>' ? base1[i][property] > base1[i + 1][property] : base1[i][property] < base1[i + 1][property]) {
+                let swap = base1[i]
+                base1[i] = base1[i + 1]
+                base1[i + 1] = swap
+                let changeIndex = base1[i].index
+                base1[i].index = base1[i + 1].index
+                base1[i + 1].index = changeIndex
+            }
+        }
+    }
+    return base1;
+}
