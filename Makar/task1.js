@@ -25,7 +25,7 @@ while(true) {
         break;
         case 3:
 
-            // deleteUser()
+            deleteUser()
         break;
         case 4:
             searchUser()
@@ -42,7 +42,8 @@ while(true) {
         console.log('Такой команды не существует')
     }
     if(command <= 0) break;
-}   
+}  
+
 function createUser() {
     let userName = prompt('имя: ')
     let userSurname = prompt('фамилия: ')
@@ -52,6 +53,7 @@ function createUser() {
     user = makeUser(userName,userSurname,userAge,userGender,userIndex)
     base.push(user)
 }
+
 function resetUser() {
     console.log(base)
     let index =  +prompt()
@@ -60,6 +62,18 @@ function resetUser() {
     base[index][changes] = newValue
 }
 
+function deleteUser() {
+    console.log(base)
+    console.log(base.length) 
+    let index = +prompt()
+    base.splice(index,1)
+    for(let i = 0;i < base.length;i++) {
+       if(base[i].index > 0){
+        newIndex = base[i].index - 1
+        base[i].index = newIndex
+       }
+    } 
+}
 
 function searchUser() {
     let key = prompt('По каким критериям поиск ')
@@ -67,6 +81,7 @@ function searchUser() {
     const find = base.filter(person => person[key]  == value)
     console.log(find)
 } 
+
 function sortUsers(base1,order){
     let property = prompt()
     for(let j = 0;j < base1.length; j++) {
@@ -81,5 +96,6 @@ function sortUsers(base1,order){
             }
         }
     }
+    
     return base1;
 }
