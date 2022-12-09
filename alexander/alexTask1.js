@@ -1,12 +1,7 @@
 const prompt = require('prompt-sync')();
 let command;
-let update;
-let indexUser;
-let specificProperty;
 let arrFindUsers;
-let sort;
-const breakKey = '0';
-
+let indexUser;
 const users = [];
 
 function CreateUser() {
@@ -19,32 +14,16 @@ function CreateUser() {
 }
 
 function updateUsers(index) {
+    const breakKey = '0';
+    let update;
     while (update !== breakKey) {
         update = prompt('введите значение которое хотите изменить, 0 закончить операцию ');
         if (update !== breakKey) {
             const user = users[index];
             const value = prompt('введите значение ');
             user[update] = value;
-}
-        
-        // switch(update) {
-        //     case 'name' : 
-        //         user.name = value;
-        //     break;
-        //     case 'surname' :
-        //         user.surname = value;
-        //     break;
-        //     case 'age' :
-        //         user.age = value;
-        //     break;
-        //     case 'gender' :
-        //         user.gender = value;
-        //     break;
-    
-        //     default : update = false;
-        // }
+        }
     }
-
 }
 
 function searchUsers(value) {
@@ -94,18 +73,20 @@ while (command !== false) {
             users.splice(indexUser, 1)
         break;
         case '4' :
+            let specificProperty;
             specificProperty = prompt('Введите выбор поиска юзера(name, surname, age, gender) ');
             searchUsers(specificProperty);
-            console.log(arrFindUsers);
+            console.table(arrFindUsers);
         break;
         case '5' :
+            let sort;
             sort = prompt('Введите значения сартировки(name, surname, age, gender) ');
-            let ascOrDesc = prompt('выберите варианты сартировки: 1)возрастание, 2) убывание ');
+            let ascOrDesc = prompt('выберите варианты сартировки: 1)убывание, 2)возрастание ');
             sortAscUsers(sort, ascOrDesc);
-            console.log(users)
+            console.table(users)
         break;
         case '6' :
-            console.log(users)
+            console.table(users)
         break;
 
         default : command = false;
