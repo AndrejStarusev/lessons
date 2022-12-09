@@ -1,12 +1,11 @@
 const prompt = require('prompt-sync')();
 let base = []
-function makeUser(name,surname,age,gender,index) {
+function makeUser(name,surname,age,gender) {
     return {
         name:name,
         surname:surname,
         age:age,
         gender:gender,
-        index:index,
     }
 }
 let user = {}
@@ -34,7 +33,12 @@ while(true) {
             console.log(sortUsers(base,'>'))
         break;
         case 6:
-            base.forEach(person => console.log(person))
+            
+        for(let i = 0;i < base.length;i++) {
+            const showUser =`name: ${base[i].name},surname: ${base[i].surname},age: ${base[i].age},gender: ${base[i].gender}`
+            console.log(showUser)
+        }
+
         break;        
     }
 
@@ -49,8 +53,7 @@ function createUser() {
     let userSurname = prompt('фамилия: ')
     let userAge = +prompt('возраст: ')
     let userGender = prompt('гендер: ')
-    let userIndex = base.length;
-    user = makeUser(userName,userSurname,userAge,userGender,userIndex)
+    user = makeUser(userName,userSurname,userAge,userGender)
     base.push(user)
 }
 
@@ -67,12 +70,6 @@ function deleteUser() {
     console.log(base.length) 
     let index = +prompt()
     base.splice(index,1)
-    for(let i = 0;i < base.length;i++) {
-       if(base[i].index > 0){
-        newIndex = base[i].index - 1
-        base[i].index = newIndex
-       }
-    } 
 }
 
 function searchUser() {
@@ -90,9 +87,6 @@ function sortUsers(base1,order){
                 let swap = base1[i]
                 base1[i] = base1[i + 1]
                 base1[i + 1] = swap
-                let changeIndex = base1[i].index
-                base1[i].index = base1[i + 1].index
-                base1[i + 1].index = changeIndex
             }
         }
     }
