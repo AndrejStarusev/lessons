@@ -59,5 +59,20 @@ function selectionSort(array) {
     }
     return sortArr
 }
-console.log(selectionSort(arr));
+
+function bubbleSort(array) {
+    const sortArr = array;
+    for ( let j = 0; j < sortArr.length; j++) {
+        for (let i = 0; i < sortArr.length - 1; i++) {
+            if ( sortArr[i] > sortArr[i + 1]) {
+                const buff = sortArr[i];
+                sortArr[i] = sortArr[i + 1];
+                sortArr[i + 1] = buff;
+            }
+        }
+
+    }
+    return sortArr
+}
+console.log(bubbleSort(arr));
 // console.log(quicksort(arr));
