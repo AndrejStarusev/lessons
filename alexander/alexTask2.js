@@ -40,4 +40,24 @@ function quicksort(array) {
 
 }
 
-console.log(quicksort(arr));
+function selectionSort(array) {
+    const sortArr = array;
+    console.log(sortArr)
+    for (let i = 0; i < sortArr.length - 1; i++) {
+        let max = -Infinity;
+        let index = NaN;
+        for (let j = 0; j < sortArr.length - i; j++) {
+            if (sortArr[j] > max) {
+                max = sortArr[j];
+                index = j;
+            }
+        }
+
+        let buff = sortArr[sortArr.length - 1 - i];
+        sortArr[sortArr.length - 1 - i] = max;
+        sortArr[index] = buff;
+    }
+    return sortArr
+}
+console.log(selectionSort(arr));
+// console.log(quicksort(arr));
