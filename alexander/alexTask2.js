@@ -1,30 +1,11 @@
 const prompt = require('prompt-sync')();
 const arr = [1, 10, 14, 5, 6, 12, 3, 2, 8, 20, 25, 30, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2, 81, 10, 14, 5, 6, 12, 3, 2, 8, 20, 25, 30, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2,1, 10, 14, 5, 6, 12, 3, 2, 8, 20, 25, 30, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2,1, 10, 14, 5, 6, 12, 3, 2, 8, 20, 25, 30, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2, 8, 1, 10, 14, 5, 6, 12, 3, 2];
 const bigArr = [];
-let timeQuickSort;
-let timeSelectionSort;
-let timeBubbleSort;
-for (let i = 0; i < 200; i++) {
+for (let i = 0; i < 2; i++) {
     bigArr.push(...arr);
 };
 
 
-function sort () {
-    let sortAscDesc = prompt('выберите вариант сортировки : 1)возрастание, 2)убывание ');
-    if (sortAscDesc) {
-        let date = Date.now();
-        quicksort(bigArr, sortAscDesc)
-        timeQuickSort = Date.now()- date;
-        console.log('check sort quick', testSort(quicksort(bigArr, sortAscDesc), sortAscDesc))
-        selectionSort(bigArr, sortAscDesc);
-        bubbleSort(bigArr, sortAscDesc);
-        console.log(`time Quick : ${timeQuickSort}`)
-        console.log(`time selection : ${timeSelectionSort}`);
-        console.log(`time bubble : ${timeBubbleSort}`);
-    }
-}
-
-sort()
 
 function quicksort(array, value) {
     const index = Math.floor(Math.random() * array.length);
@@ -64,7 +45,6 @@ function quicksort(array, value) {
 }
 
 function selectionSort(array, value) {
-    timeSelectionSort = Date.now();
     const sortArr = array;
     if (value === '1') {
         for (let i = 0; i < sortArr.length - 1; i++) {
@@ -98,13 +78,10 @@ function selectionSort(array, value) {
             sortArr[index] = buff;
         }
     }
-    timeSelectionSort = Date.now() - timeSelectionSort;
-    console.log('check sort selection', testSort(sortArr, value))
     return sortArr
 }
 
 function bubbleSort(array, value) {
-    timeBubbleSort = Date.now();
     const sortArr = array;
     if (value === '1') {
         for ( let j = 0; j < sortArr.length; j++) {
@@ -129,33 +106,49 @@ function bubbleSort(array, value) {
     
         }
     }
-    timeBubbleSort = Date.now() - timeBubbleSort;
-    console.log('check sort bubble', testSort(sortArr, value))
+
     return sortArr
 }
 
-function testSort (array, type) {
-    let ASC = bigArr.sort();
-    let DESC = ASC.reverse();
-    if(type === '1') {
-        for(let i = 0; i < array.length; i++) {
-            if (ASC[i] === array[i]) {
-                return true
-            }else {
-                return false
-            }
-            
-        }
-    }else if (type === '2') {
-        for(let i = 0; i < array.length; i++) {
-            if (DESC[i] === array[i]) {
-                return true
-            }else {
-                return false
-            }
-            
-        }
+
+function test(sort) {
+    const arr = [1, 3, 2];
+    const arrAsc = [1, 2, 3];
+    const arrDesc = [3, 2, 1];
+    
+    const ascRes = sort([...arr], '1')  
+    const descRes = sort([...arr], '2')
+    
+    for(let i = 0; i < arr.length; i++) {
+
+        if (arrAsc[i] !== ascRes[i]) return false
+
     }
 
+    for(let i = 0; i < arr.length; i++) {
+        if (arrDesc[i] !== descRes[i]) return false
 
-}
+    }
+    
+    return true 
+    
+
+
+  }
+const timeBeforQuick = Date.now();
+const isValidQuick = test(quicksort);
+console.log('Quick time : ',Date.now() - timeBeforQuick);
+
+const timeBeforSelect = Date.now(); 
+const isValidSelect = test(selectionSort);
+console.log('select time : ', Date.now() - timeBeforSelect);
+
+const timeBeforBubble = Date.now();   
+const isValidBubble = test(bubbleSort);
+console.log('bubble time : ',Date.now() - timeBeforBubble);
+
+
+console.log('isValidQuick : ', isValidQuick)
+console.log('isValidSelect : ', isValidSelect)
+console.log('isValidBubble : ', isValidBubble)
+
