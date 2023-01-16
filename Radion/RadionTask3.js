@@ -36,14 +36,12 @@ app.get("/", function (req, res) {
 
 app.post("/calc/:operator", function (req, res) {
   const operator = req.params.operator;
-  console.log(1, req.body);
   const { a, b } = req.body;
 
   const result = calculate(a, b, operator);
 
   res.send({
     result,
-    operator,
   });
 });
 
