@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', function(req, res) {
-  res.send('helloooooo world');
+  res.send('helloo world');
 });
 
 app.post('/calc/:operator', function(req, res) {
