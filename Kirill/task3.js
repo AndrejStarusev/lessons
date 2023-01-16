@@ -20,20 +20,20 @@ app.post('/calc/:operator', function(req, res) {
     case 'minus': 
         result = a - b
         break;
-    case 'del':
+    case 'division':
         if ((a == 0) || (b == 0)) {
             result = 'ne delim na 0'
         } else {
             result = a / b
         }
         break;
-    case 'umnojenie':
+    case 'multiply':
         result = a * b
         break;
-    case 'koren':
+    case 'degree':
         result = a ** b
         break; 
-    case 'procent':
+    case 'remainder':
         result = a % b
         break; 
   }
