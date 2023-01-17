@@ -14,11 +14,15 @@ function calc(a, b, operator) {
       return a * b
     case "divide":
       return a / b
+    case "involve":
+      return Math.pow(a, b);
+    case "remainder":
+      return a % b;
     default: throw new Error('operator not found')
   }
 }
 app.get('/', function(req, res) {
-  res.send('zalupa');
+  res.send('hello world');
 });
 
 app.post('/calc/:operator', function(req, res) {
