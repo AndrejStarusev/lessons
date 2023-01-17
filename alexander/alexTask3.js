@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 function calc(a, b, operator) {
   switch (operator) {
@@ -14,10 +16,10 @@ function calc(a, b, operator) {
       return a * b
     case "divide":
       return a / b
-    // case "involve":
-    //   return Math.pow(a, b);
-    // case "remainder":
-    //   return a % b;
+    case "involve":
+      return Math.pow(a, b);
+    case "remainder":
+      return a % b;
     default: throw new Error('operator not found')
   }
 }
@@ -28,6 +30,7 @@ app.get('/', function(req, res) {
 app.post('/calc/:operator', function(req, res) {
   const operator = req.params.operator;
   const { a, b } = req.body;
+
   let result;
   
   try {
