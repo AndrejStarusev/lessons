@@ -14,10 +14,10 @@ function calc(a, b, operator) {
       return a * b
     case "divide":
       return a / b
-    case "involve":
-      return Math.pow(a, b);
-    case "remainder":
-      return a % b;
+    // case "involve":
+    //   return Math.pow(a, b);
+    // case "remainder":
+    //   return a % b;
     default: throw new Error('operator not found')
   }
 }
@@ -42,6 +42,6 @@ app.post('/calc/:operator', function(req, res) {
   });
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('App is started');
 })
