@@ -12,15 +12,15 @@ app.get('/', function(req, res) {
 function calculator(a, b, operand) {
 
   switch(operand) {
-    case "-":
+    case "plus":
       return  a - b;
-    case "+":
+    case "minus":
       return  a + b;
-    case "*":
+    case "multi":
       return  a * b;
-    case "/":
+    case "divide":
       return a / b;
-    case "%":
+    case "divRemainder":
       return  a % b;
   }
   return 'Incorect operand';
