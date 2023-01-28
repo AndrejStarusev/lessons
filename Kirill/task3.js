@@ -21,7 +21,7 @@ app.post('/calc/:operator', function(req, res) {
         result = a - b
         break;
     case 'division':
-        if ((a == 0) || (b == 0)) {
+        if ((b == 0)) {
             result = 'ne delim na 0'
         } else {
             result = a / b
