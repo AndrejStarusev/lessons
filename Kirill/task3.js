@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', function(req, res) {
-  res.send('helloooooo world');
+  res.send('helloo world');
 });
 
 app.post('/calc/:operator', function(req, res) {
@@ -20,20 +20,20 @@ app.post('/calc/:operator', function(req, res) {
     case 'minus': 
         result = a - b
         break;
-    case 'del':
-        if ((a == 0) || (b == 0)) {
+    case 'division':
+        if ((b == 0)) {
             result = 'ne delim na 0'
         } else {
             result = a / b
         }
         break;
-    case 'umnojenie':
+    case 'multiply':
         result = a * b
         break;
-    case 'koren':
+    case 'degree':
         result = a ** b
         break; 
-    case 'procent':
+    case 'remainder':
         result = a % b
         break; 
   }
