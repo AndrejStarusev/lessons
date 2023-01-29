@@ -40,10 +40,9 @@ app.post('/calc/:operator', function(req, res) {
 
   res.send({
     result,
-    operator,
   });
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('App is started');
 })
