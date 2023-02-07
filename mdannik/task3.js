@@ -15,9 +15,9 @@ function calculator(a, b, operand) {
 
   switch(operand) {
     case "plus":
-      return  a - b;
-    case "minus":
       return  a + b;
+    case "minus":
+      return  a - b;
     case "multi":
       return  a * b;
     case "divide":
