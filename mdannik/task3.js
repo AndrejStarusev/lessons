@@ -13,9 +13,9 @@ function calculator(a, b, operand) {
 
   switch(operand) {
     case "plus":
-      return  a - b;
-    case "minus":
       return  a + b;
+    case "minus":
+      return  a - b;
     case "multi":
       return  a * b;
     case "divide":
@@ -42,6 +42,6 @@ app.post('/calc/:operator', function(req, res) {
   });
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('App is started');
 })
